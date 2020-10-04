@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+    <title>Datos de usuario</title>
+</head>
+
+<body>
+<div class="container">
+    <h3 class="text-primary border border-success border-top-0 border-left-0 border-right-0" th:text="${titulo}"></h3>
+    <form th:action="@{/register}" th:object="${usuario}" method="post" name="usuario">
+        <table class="table table-striped">
+            <tr>
+                <td>Rut</td>
+                <td>
+                    <input type="text" th:field="*{userId}" name="rut" id="rut" min="1" th:readonly="${action}==1"
+                           oninput="checkRut(this)" style="width: 124px;" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" th:field="*{name}" required/></td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td><input type="text" th:field="*{lastName}" required/></td>
+            </tr>
+            <tr>
+                <td>Correo</td>
+                <td><input type="email" th:field="*{email}" required/></td>
+            </tr>
+            <tr>
+                <td>Fecha Nac.</td>
+                <td><input type="date" th:field="*{birth}" id="start" name="trip-start"
+                           min="1920-01-01" max="2003-01-01" required/></td>
+            </tr>
+            <tr>
+                <td>Activo?</td>
+                <td>
+                    <input type="checkbox" th:field="${usuario.active}" th:checked="${usuario.active}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Enviar"/>
+                </td>
+            </tr>
+        </table>
+        <input type="text" th:value="${action}" name="action" id="action" hidden/>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script th:src="@{js/validarut.js}"></script>
+</body>
+</html>

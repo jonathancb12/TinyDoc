@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="header">
+    <title>Listado</title>
+</head>
+
+<body>
+
+<div class="container">
+    <h3 class="text-primary border border-success border-top-0 border-left-0 border-right-0" th:text="${titulo}"></h3>
+    <div th:switch="${lista == null}">
+        <table th:case="false" class="table table-striped">
+            <thead>
+            <tr>
+                <td>Rut</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Correo</td>
+                <td>Fec. Nac.</td>
+                <td>Activo</td>
+                <td>Accion</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="usuario: ${lista}">
+                <td th:text="${usuario.userId}"></td>
+                <td th:text="${usuario.name}"></td>
+                <td th:text="${usuario.lastName}"></td>
+                <td th:text="${usuario.email}"></td>
+                <td th:text="${#dates.format(usuario.birth, 'dd-MMM-yyyy')}"></td>
+                <td th:text="${usuario.active?'Si':'No'}"></td>
+                <td><a th:href="@{/update/}+${usuario.userId}" class="btn btn-success btn-xs">Modificar</a></td>
+                <td><a th:href="@{/delete/}+${usuario.userId}"
+                       onclick="return confirm('¿Desea eliminar este usuario?');"
+                       class="btn btn-warning btn-xs">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <span th:case="true"><label th:text="${msje}"/></span>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>

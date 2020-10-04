@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:include="header">
+    <title>Nivel Seguridad</title>
+</head>
+<body>
+<div class="container">
+<!--    <h4>Nuevo rol</h4>-->
+<!--    <form class="form-inline" th:action="@{/security}" method="post">-->
+<!--        <input type="text" class="form-control mb-2 mr-sm-2" name="descripcion"-->
+<!--               placeholder="Administrador, Lectura, Creador...">-->
+
+<!--        <button type="submit" class="btn btn-primary mb-2">Guardar</button>-->
+<!--    </form>-->
+
+    <div>
+        <hr>
+        <h4>Roles Existentes</h4>
+        <div th:switch="${lista == null}">
+            <table th:case="false" class="table table-striped">
+                <thead>
+                <tr>
+                    <td>N° Registro</td>
+                    <td>Usuario</td>
+                    <td>Descripción</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="roles: ${lista}">
+                    <td th:text="${roles.getIdRol()}"></td>
+                    <td th:text="${roles.getUserId()}"></td>
+                    <td th:text="${roles.getDescripcion()}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <span th:case="true"><label th:text="${msje}"/></span>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

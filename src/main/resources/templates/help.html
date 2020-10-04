@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head th:include="header">
+    <meta charset="UTF-8">
+    <title>Ayuda</title>
+</head>
+<body>
+<div class="container">
+    <h4>Ayuda?... aquí tenemos un par de preguntas frecuentes</h4>
+    <hr>
+    <div>
+        <strong>* ¿Como iniciar sesión?</strong>
+        <p>Para iniciar sesión en la plataforma, debes contar con tu correo corporativo y contraseña. Si ya los tienes,
+            puedes entrar <a th:href="@{/login}">aquí</a>.</p>
+        <strong>* ¿Qué sucede si elimino un registro accidentalmente?</strong>
+        <p>Si antes de modificar o eliminar datos, no se ha realizado un respaldo de base de datos, lamentablemente la
+            información no podrá recuperarse. Si por el contrario, existe una copia previa de la base de datos generada
+            desde el módulo <a th:href="@{/recovery}">gestión de datos</a>, allí mismo podrá recuperar los datos.</p>
+        <strong>¿Puedo eliminar un rol existente?</strong>
+        <p>No, no es posible eliminar los roles ya creados, debido a que éstos determinan el acceso de los usuarios a
+            los módulos de la aplicación.</p>
+        <strong>Después de un tiempo, vuelvo a trabajar en la empresa ¿Mi cuenta de usuario aún existe?</strong>
+        <p>Exacto, tu cuenta sigue existiendo sólo que ha sido desactivada, pídele al administrador de esta plataforma
+            que reactive tu cuenta.</p>
+        <strong>Si estoy trabajando fuera de la oficina ¿Igual puedo entrar al sistema?</strong>
+        <p>Claro! esta es una plataforma pensada y diseñada para que puedas conectarte desde cualquier parte del mundo,
+            recuerda que
+            sólo debes contar con un internet estable.</p>
+    </div>
+    <div><p>Aún con dudas? pincha <a th:href="@{/doc}">aquí</a> para más detalles</p></div>
+</div>
+</body>
+</html>
